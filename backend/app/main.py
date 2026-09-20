@@ -39,11 +39,13 @@ def get_rag_pipeline() -> RAGPipeline:
 
 
 @app.get("/health")
+@app.get("/svc/api/health")
 def health() -> dict:
     return {"status": "ok"}
 
 
 @app.post("/api/chat", response_model=ChatResponse)
+@app.post("/svc/api/chat", response_model=ChatResponse)
 def chat(request: ChatRequest) -> ChatResponse:
     question = request.question.strip()
 
